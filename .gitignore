@@ -1,0 +1,6 @@
+.idea/
+target/
+__pycache__/
+data/
+.env
+playground.ipynb
