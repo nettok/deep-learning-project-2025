@@ -2,5 +2,7 @@
 target/
 __pycache__/
 data/
+*_checkpoints/
+*.keras
 .env
 playground.ipynb
