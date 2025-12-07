@@ -5,3 +5,4 @@ scikit-learn~=1.7
 matplotlib~=3.10
 seaborn~=0.13
 imbalanced-learn~=0.14
+tensorflow_datasets~=4.9
