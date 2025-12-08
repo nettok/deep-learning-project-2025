@@ -9,13 +9,6 @@ from typing import List, Tuple, Dict
 from collections import Counter
 import matplotlib.pyplot as plt
 
-# Suppress TensorFlow CUDA warnings
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
-# Set random seed for reproducibility
-SEED = 42
-keras.utils.set_random_seed(SEED)
-
 def load_text_data(data_path: str) -> str:
     """
     Loads and concatenates text from all .txt files in the specified directory.
