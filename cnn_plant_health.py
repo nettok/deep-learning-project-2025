@@ -10,12 +10,6 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from typing import Tuple
 
-# Suppress TensorFlow CUDA warnings
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
-# Set random seed for reproducibility
-SEED = 42
-keras.utils.set_random_seed(SEED)
 
 def load_raw_data(split_ratio: float = 0.8, data_dir: str = 'data/cnn/') -> Tuple[tf.data.Dataset, tf.data.Dataset, tfds.core.DatasetInfo]:
     """
@@ -138,28 +132,22 @@ def build_cnn_model(input_shape: Tuple[int, int, int], num_classes: int) -> kera
     
     model = keras.Sequential([
         layers.InputLayer(shape=input_shape),
-        
-        # Convolutional Block 1
+
         layers.Conv2D(32, (3, 3), activation='relu', padding='same'),
         layers.MaxPooling2D((2, 2)),
-        
-        # Convolutional Block 2
+
         layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
         layers.MaxPooling2D((2, 2)),
-        
-        # Convolutional Block 3
+
         layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
         layers.MaxPooling2D((2, 2)),
-        
-        # Convolutional Block 4
+
         layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
         layers.MaxPooling2D((2, 2)),
-        
-        # Convolutional Block 5
+
         layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
         layers.MaxPooling2D((2, 2)),
-        
-        # Dense Layers
+
         layers.Flatten(),
         layers.Dense(64, activation='relu'),
         layers.Dense(num_classes, activation='softmax')
