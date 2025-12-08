@@ -6,6 +6,8 @@ This project implements three different deep learning models to solve distinct t
 
 ## 1. MLP - Credit Card Fraud Detection
 
+[Link to Notebook](01_MLP.ipynb)
+
 ### Dataset
 *   **Source:** [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) (Kaggle).
 *   **Description:** Contains ~285,000 credit card transactions from September 2013.
@@ -32,6 +34,8 @@ python mlp_fraud.py --data_path data/mlp/raw/creditcard.csv
 
 ## 2. CNN - Plant Disease Classification
 
+[Link to Notebook](02_CNN.ipynb)
+
 ### Dataset
 *   **Source:** [Plant Village](https://www.tensorflow.org/datasets/catalog/plant_village) (TensorFlow Datasets).
 *   **Description:** ~54,000 images of plant leaves categorized into 38 classes (species + disease/healthy status).
@@ -55,6 +59,8 @@ python cnn_plant_health.py --epochs 10
 ---
 
 ## 3. RNN - Story Generation
+
+[Link to Notebook](03_RNN.ipynb)
 
 ### Dataset
 *   **Source:** [Project Gutenberg](https://www.gutenberg.org/).
