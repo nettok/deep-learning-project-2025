@@ -12,13 +12,6 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from typing import Tuple
 
-# Suppress TensorFlow CUDA warnings
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
-# Set random seed for reproducibility
-SEED = 42
-keras.utils.set_random_seed(SEED)
-
 def load_creditcard_data(file_path: str) -> pd.DataFrame:
     """
     Loads the creditcard.csv dataset from the specified path.
@@ -139,14 +132,14 @@ def split_data(df: pd.DataFrame, target_col: str = 'Class', test_size: float = 0
     X = df.drop(columns=[target_col])
     y = df[target_col]
     
-    return train_test_split(X, y, test_size=test_size, stratify=y, random_state=SEED)
+    return train_test_split(X, y, test_size=test_size, stratify=y)
 
 def apply_resampling(X_train: pd.DataFrame, y_train: pd.Series) -> Tuple[pd.DataFrame, pd.Series]:
     """
     Applies resampling (SMOTE+ENN) to the training data.
     """
     print("Applying SMOTE+ENN (Hybrid Resampling)...")
-    smote_enn = SMOTEENN(random_state=SEED)
+    smote_enn = SMOTEENN()
     X_resampled, y_resampled = smote_enn.fit_resample(X_train, y_train)
     
     print(f"New training counts: {y_resampled.value_counts()}")
@@ -321,7 +314,7 @@ def main():
 
         # Further split training data into training and validation sets (Validation remains pure/imbalanced)
         print("Splitting training data into partial train and validation sets...")
-        X_train, X_val, y_train, y_val = train_test_split(X_train_full, y_train_full, test_size=0.2, stratify=y_train_full, random_state=SEED)
+        X_train, X_val, y_train, y_val = train_test_split(X_train_full, y_train_full, test_size=0.2, stratify=y_train_full)
         
         # Scaling (Fit on Train, Transform Val and Test)
         X_train, X_val, X_test = scale_features(X_train, X_val, X_test)
