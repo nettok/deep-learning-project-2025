@@ -157,7 +157,7 @@ def build_model(vocab_size: int, embedding_dim: int, rnn_units: int, batch_size:
     model = keras.Sequential([
         layers.Input(batch_shape=(batch_size, None)),
         layers.Embedding(vocab_size, embedding_dim),
-        layers.GRU(rnn_units,
+        layers.LSTM(rnn_units,
                    return_sequences=True,
                    stateful=stateful, 
                    recurrent_initializer='glorot_uniform'),
