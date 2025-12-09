@@ -139,17 +139,18 @@ def build_cnn_model(input_shape: Tuple[int, int, int], num_classes: int) -> kera
         layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
         layers.MaxPooling2D((2, 2)),
 
-        layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
+        layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
         layers.MaxPooling2D((2, 2)),
 
-        layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
+        layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
         layers.MaxPooling2D((2, 2)),
 
-        layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
+        layers.Conv2D(256, (3, 3), activation='relu', padding='same'),
         layers.MaxPooling2D((2, 2)),
 
         layers.Flatten(),
-        layers.Dense(64, activation='relu'),
+        layers.Dense(128, activation='relu'),
+        layers.Dropout(0.3),
         layers.Dense(num_classes, activation='softmax')
     ])
 
