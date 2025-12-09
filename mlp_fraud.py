@@ -164,6 +164,9 @@ def build_mlp_model(input_dim: int) -> keras.Model:
         layers.Dense(64, activation='relu', kernel_initializer='he_uniform'),
         layers.BatchNormalization(),
         layers.Dropout(0.3),
+        layers.Dense(32, activation='relu', kernel_initializer='he_uniform'),
+        layers.BatchNormalization(),
+        layers.Dropout(0.3),
         layers.Dense(1, activation='sigmoid')  # Output layer for binary classification
     ])
 
@@ -173,6 +176,7 @@ def build_mlp_model(input_dim: int) -> keras.Model:
                       'accuracy',
                       keras.metrics.Precision(name='precision'),
                       keras.metrics.Recall(name='recall'),
+                      keras.metrics.AUC(name='auc'),
                   ])
     return model
 
